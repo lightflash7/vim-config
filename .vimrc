@@ -4,7 +4,7 @@
 
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
-"Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 "Plug 'davidhalter/jedi-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'majutsushi/tagbar'
@@ -68,10 +68,21 @@ set nu "显示行数
 set mouse=a "允许鼠标操作
 set ignorecase "搜索时忽略大小写
 set incsearch "边输入边搜索
-colorscheme molokai "变主题为molokai
+"colorscheme molokai "变主题为molokai
 set showcmd  "显示未完成命令 
 set completeopt-=preview
-set tabstop=4
+set tabstop=4             "tab缩进4格
+inoremap <C-W> <Esc>:wq<CR>
+nnoremap <C-W> <Esc>:wq<CR>
+
+
+
+"主题
+let g:solarized_termcolors=256
+"colorscheme molokai "变主题为molokai
+colorscheme solarized "变主题为solarized-light
+
+
 
 "F5一键编译
 map <F5> :call CompileRunGcc()<CR>
@@ -89,11 +100,6 @@ func! CompileRunGcc()
 	endif 
 endfunc
 
-"括号匹配
-inoremap ( ()<Esc>i
-inoremap [ []<Esc>i
-inoremap { {}<Esc>i
-inoremap ' ''<Esc>i
 
 "普通模式多窗口快速切换
 nnoremap <C-J> <C-W><C-J>
@@ -123,5 +129,3 @@ au BufNewFile,BufRead *.py
 	\ set autoindent | 
 	\ set fileformat=unix
 
-"跳出括号
-"inoremap <C-M> <esc>/}<CR><esc>a
